@@ -1,0 +1,218 @@
+--As a beginner print Hello world, Add 1 and 2, quit the R Console
+
+> print("Hello world!")
+> 1+2
+> q()
+
+
+--Creating Account on R Studio --Then Install Packages,load tidyverse library, load lubridate package in R CONSOLE
+
+> install.packages("Tidyverse")
+> library(tidyverse)
+> library(lubridate)
+
+--Installing a dataset 
+
+> install.packages("palmerpenguins")
+> library(palmerpenguins)
+> summary(penguins)
+
+--to show table IN SOURCE EDITOR 
+
+> View(Penguins)
+
+
+-------------Fundamentals of R
+
+> print("Coding in R")
+#> [1] "Coding in R"
+
+--To know about the instructions
+
+> ?print()
+
+--Here's is an example of a variable in text and number datatypes (<- is the operator we have chosen for assigning variables that must remain same for everytime)
+
+first_variable <- "This is my variable"
+second_variable <- 12.5
+
+--VECTORS & LISTS
+
+vec_1 <- c(12, 23, 45, 56)
+vec_1
+
+--ATOMIC VECTORS
+--For example, we can use the c() function to store numeric data in a vector. 
+
+c(2.5, 48.5, 101.5)
+
+--To create a vector of integers using the c() function, we must place the letter "L" directly after each number.
+
+c(1L, 5L, 15L)
+
+--We can also create a vector containing characters.
+
+c(“Sara” , “Lisa” , “Anna”)
+
+--We can create vector containing logicals. 
+
+c(TRUE, FALSE, TRUE)
+
+--To determine what type of vector we are working with.
+
+typeof(c(“a” , “b”))
+#> [1] "character"
+
+--To determine the length of an existing vector. Number of elements in a vector.
+
+x <- c(33.5, 57.75, 120.05)
+length(x)
+#> [1] 3
+
+--Naming vectors: We can name the elements of a vector with the names() function. As an example, let’s assign the variable x to a new vector with three elements. 
+
+x <- c(1, 3, 5)
+names(x) <- c("a", "b", "c")
+
+x
+#> a b c 
+#> 1 3 5
+
+--LISTS 
+--we can create a list that contains four different kinds of elements: character ("a"), integer (1L), double (1.5), and logical (TRUE). 
+
+list("a", 1L, 1.5, TRUE)
+
+--lists can contain other lists. If you want, you can even store a list inside a list inside a list—and so on. 
+
+list(list(list(1 , 3, 5)))
+
+--Determining the structure of lists 
+
+str(list("a", 1L, 1.5, TRUE))
+#> List of 4
+#>  $ : chr "a"
+#>  $ : int 1
+#>  $ : num 1.5
+#>  $ : logi TRUE
+
+--Smae but for nested lists. We get $ symbol for these nested lists
+
+z <- list(list(list(1 , 3, 5)))
+str(z)
+#> List of 1
+#>  $ :List of 1
+#>   ..$ :List of 3
+#>   .. ..$ : num 1
+#>   .. ..$ : num 3
+#>   .. ..$ : num 5
+
+--We can name the elements of a list when we first create it with the list() function:
+
+list('Chicago' = 1, 'New York' = 2, 'Los Angeles' = 3)
+$Chicago
+[1] 1
+$`New York`
+[1] 2
+$`Los Angeles`
+[1] 3
+
+
+--Date/Time
+--To get the current date we can run the today() function. The date appears as year, month, and day. 
+today()
+#> [1] "2021-01-20"
+--To get the current date-time we can run the now() function. Note that the time appears to the nearest second. 
+now()
+#> [1] "2021-01-20 16:25:05 UTC"
+
+--Converting strings into date(we have to first identify the order in which the year, month, and day appear in our dates. 
+Then, arrange the letters y, m, and d in the same order.)
+When we run the function, R returns the date in yyyy-mm-dd format. 
+
+ymd("2021-01-20")
+#> [1] "2021-01-20"
+
+--It works the same way for any order. For example, month, day, and year. R still returns the date in yyyy-mm-dd format.
+
+mdy("January 20th, 2021")
+#> [1] "2021-01-20"
+
+--Or, day, month, and year. R still returns the date in yyyy-mm-dd format.
+
+dmy("20-Jan-2021")
+#> [1] "2021-01-20"
+
+--These functions also take unquoted numbers and convert them into the yyyy-mm-dd format.
+
+ymd(20210120)
+#> [1] "2021-01-20"
+
+--Creating date-time components
+To create a date-time from a date, add an underscore and one or more of the letters h, m, and s (hours, minutes, seconds) to the name of the function.
+
+ymd_hms("2021-01-20 20:11:59")
+#> [1] "2021-01-20 20:11:59 UTC"
+mdy_hm("01/20/2021 08:01")
+#> [1] "2021-01-20 08:01:00 UTC"
+
+--We might want to switch between a date-time and a date. 
+
+as_date(now())
+#> [1] "2021-01-20"
+
+
+--DATA FRAMES
+--A data frame is a collection of columns–similar to a spreadsheet or SQL table.
+--First, columns should be named.
+--Second, data frames can include many different types of data, like numeric, logical, or character.
+--Finally, elements in the same column should be of the same type.
+
+
+--to manually create a data frame in R
+
+data.frame(x = c(1, 2, 3) , y = c(1.5, 5.5, 7.5))
+   x y
+1  1 1.5
+2  2 5.5
+3  3 7.5
+
+--FILES
+--to create a new folder
+
+dir.create ("destination_folder")
+
+--to create a blank file.
+
+file.create (“new_text_file.txt”) 
+file.create (“new_word_file.docx”) 
+file.create (“new_csv_file.csv”) 
+
+--to check of file is successfully created. If yes then TRUE, or else FALSE
+
+file.create (“new_csv_file.csv”)
+[1] TRUE 
+
+--to copy a file. First enter name of file then the destination where we want to copy our file.
+
+file.copy (“new_text_file.txt” , “destination_folder”)
+
+--to delete a file
+
+unlink (“some_.file.csv”)
+
+--MATRIX
+--A two dimensional collection of data elements, i.e., Rows and columns. Can only contain single data type.
+--We can choose to specify the number of rows or the number of columns by using the code nrow = or ncol =. 
+
+matrix(c(3:8), nrow = 2)
+    [,1] [,2] [,3]
+[1,]    3    5    7
+[2,]    4    6    8
+
+matrix(c(3:8), ncol = 2)
+
+    [,1] [,2] 
+[1,]    3    6    
+[2,]    4    7    
+[3,]    5    8   
