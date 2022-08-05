@@ -20,6 +20,16 @@ colnames(diamonds)
 --Since this function is a part of dplyr package, we have to load tidyverse library
 library(tidyverse)
 
---To make changes to dataframe: mutate :
+--To make changes to dataframe: mutate
 mutate(diamonds, carat_2 = carat * 100)
 
+
+
+
+
+--Creating Tibbles
+
+library(tidyverse) 
+data(diamonds)
+View(diamonds)
+as_tibble(diamonds)
