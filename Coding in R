@@ -1,0 +1,77 @@
+--# Here's an example of a variable
+
+first_variable <- "This is my variable"
+second_variable <- 12.5
+vec_1 <- c(12, 23, 45, 56)
+vec_1
+
+
+--# Our first Arithmetic calculation in R
+
+quarter_1_sales <- 40987.45
+quarter_2_sales <- 39364.20
+mid_year_sales <- quarter_1_sales+quarter_2_sales
+year_end_sales <- mid_year_sales*2
+
+
+--OPERATOR (and, or , not)
+
+--and 
+
+x <- 10
+# x<12 & x>3
+# x>3 & x<3
+# x>12 & x<12
+# x>12 & x<3
+
+--or
+
+--not
+
+--CONDITIONAL STATEMENTS
+
+--if
+
+if (condition) {
+ expr
+}
+
+x <- 4
+if (x > 0) {
+  print("x is a positive number")
+}
+
+--else
+
+if (condition) {
+  expr1
+} else {
+ expr2
+}
+
+x <- 7
+if (x > 0) {
+ print ("x is a positive number")
+} else {
+ print ("x is either a negative number or zero")
+}
+
+--else if
+
+if (condition1) {
+ expr1
+} else if (condition2) {
+ expr2
+} else {
+ expr3
+}
+
+x <- -1
+if (x < 0) {
+ print("x is a negative number")
+} else if (x == 0) {
+ print("x is zero")
+} else {
+ print("x is a positive number")
+}
+# [1] "x is a negative number"
