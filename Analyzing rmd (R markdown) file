@@ -1,0 +1,49 @@
+Markdown is a simple language for adding formatting to text documents. 
+We are working in an `R markdown` file, which allows us to put code and writing in the same place.
+In rmd doc, we can use the `knit` button in the menu bar at the top of the editing pane to export our work to a beautiful, readable document for others. 
+
+
+## Step 1: Using `R packages`
+
+install.packages("tidyverse")
+library(tidyverse)
+
+## Step 2: Viewing data
+
+--`head()` function, which displays the columns and the first several rows of data.
+head(diamonds)
+
+--`str()` and `glimpse()` return summaries of each column in our data arranged horizontally.
+str(diamonds)
+glimpse(diamonds)
+
+--`colnames()` returns a list of column names from our dataset.
+colnames(diamonds)
+
+## Step 3: Cleaning data
+
+--`rename()` -> to rename the columns, or variables, in our data.
+rename(diamonds, carat_new = carat)
+rename(diamonds, carat_new = carat, cut_new = cut)  --rename more than one variable in the same `rename()` code.
+
+--`summarize()` for summarizing our data.
+summarize(diamonds, mean_carat = mean(carat))
+
+## Step 4: Visualizing data
+
+--`ggplot2` package is automatically loaded with the tidyverse packages
+
+--This code takes the `diamonds` data, plots carat column on the X-axis, price column on the Y-axis, and presents a scatter plot using the `geom_point()` command.
+ggplot(data = diamonds, aes(x = carat, y = price)) +
+  geom_point()
+
+--to change the color of each point
+ggplot(data = diamonds, aes(x = carat, y = price, color = cut)) +
+  geom_point()
+  
+--`facet_wrap()` to create a different plot for each type of cut.
+ggplot(data = diamonds, aes(x = carat, y = price, color = cut)) +
+  geom_point() +
+  facet_wrap(~cut)
+
+## Step 5: Documentation
