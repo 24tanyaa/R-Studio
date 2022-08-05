@@ -1,0 +1,25 @@
+Working with Dataframes - Tibbles
+--We are using the "diamonds" dataset that is a part of ggplot2 package, so we have to install it first.
+
+install.packages("tidyverse")
+library(ggplot2)
+data("diamonds")
+View(diamonds)
+
+--To view only top six rows  
+head(diamonds)
+
+--To highlight structure of dataframe
+str(diamonds)
+
+--To view the column names
+colnames(diamonds)
+
+--MUTATE
+
+--Since this function is a part of dplyr package, we have to load tidyverse library
+library(tidyverse)
+
+--To make changes to dataframe: mutate :
+mutate(diamonds, carat_2 = carat * 100)
+
