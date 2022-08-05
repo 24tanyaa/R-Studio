@@ -1,0 +1,57 @@
+--Most common sources of data
+
+- A`package` with data that can be accessed by loading that `package`
+- An external file like a spreadsheet or CSV that can be imported into `R`
+- Data that has been generated from scratch using `R` code
+
+## Step 1: Load packages and library
+
+install.packages("tidyverse')
+library(tidyverse)
+
+## Step 2: Create data frame
+
+--most common is to create individual vectors of data and then combine them into a data frame using the `data.frame()` function.
+--So we are going to create different vectors and create a new data frame called `people`
+
+names <- c("", "", "", "")
+age <- c(, , , )
+people <- data.frame(names, age)
+
+names <- c("Abhishek", "Ali", "Aryan", "Arjun")
+age <- c(27, 35, 20, 15)
+people <- data.frame(names, age)
+
+View(people)
+
+## Step 3: inspect the data frame
+
+head(people)
+str(people)
+glimpse(people)
+colnames(people)
+
+--adds a new column 
+mutate(people, age_in_20 = age + 20)
+
+
+
+
+--practice
+
+names <- c("Abhishek", "Ali", "Aryan", "Arjun", "Ananya", "Arpita", "Ankit", "Aadi", "Anjali", "Avni")
+age <- c(27, 35, 20, 25, 23, 33, 46, 24, 20, 46)
+gender <- c("M", "M", "M", "M", "F", "F", "M", "M", "F", "F")
+color <- ("blue", "green", "yellow", "black", "wine", "brown", "red", "violet", "black", "white")
+department <- ("IT", "Marketing", "Finance", "Service", "Warehousing", "IT", "Service", "IT, Finance", "Marketing")
+city <- ("Lucknow", "Kolkata", "Chandigarh", "Pune", "Noida", "Chennai", "Mumbai", "Shimla", "Bangalore", "Ahmedabad")
+state <- ("UP", "WB", "PN", "MH", "UP", "TN", "MH", "HP", "KA", "GJ")
+
+employee <- data.frame(names, age, gender, color, department, city, state)
+
+View(employee)
+head(employee)
+str(employee)
+glimpse(employee)
+colnames(employee)
+mutate(employee, age_in_10 = age + 10)
