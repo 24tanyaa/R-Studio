@@ -1,0 +1,29 @@
+Pipes Are a form of nested lists.
+
+--First we will load a data and then view it.
+
+data("ToothGrowth")
+View(ToothGrowth)
+
+--filter the dataset and name it as 'filtered_tg'
+
+filtered_tg <- filter(ToothGrowth, dose==0.5)
+View filtered_tg
+
+--sorting the dataset based on len
+
+arrange(ToothGrowth, len)
+
+--NESTED function is completely contained within another function. 
+
+arrange(filter(ToothGrowth, dose==0.5), len)
+
+--Using PIPES %>%
+--essentials
+Add the pipe operator at the end of each line of the piped operation, except the last one. 
+Check the code after we have programmed our pipe.
+Revisit the piped operation to check for parts of your code to fix.
+
+filtered_toothgrowth <- ToothGrowth %<%
+  filter(dose==0.5) %<%
+  arrange(len) 
