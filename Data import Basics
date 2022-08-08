@@ -1,0 +1,69 @@
+--first Load packages, and library
+
+install.packages("tidyverse')
+library(tidyverse)
+ 
+--readr package
+--file types that store rectangular data:
+.csv (comma separated values): a .csv file is a plain text file that contains a list of data. They mostly use commas to separate (or delimit) data, but sometimes they use other characters, like semicolons. 
+.tsv (tab separated values): a .tsv file stores a data table in which the columns of data are separated by tabs. For example, a database table or spreadsheet data. 
+.fwf (fixed width files): a .fwf file has a specific format that allows for the saving of textual data in an organized fashion. 
+.log: a .log file is a computer-generated file that records events from operating systems and other software programs.
+
+
+--Readr functions
+
+comma-separated values (.csv) files:  > read_csv()
+tab-separated values files:   > read_tsv()
+general delimited files:    > read_delim()
+fixed-width files:   > read_fwf()
+tabular files where columns are separated by white-space:   > read_table()
+web log files:   >read_log()
+NOTE: these functions will work automatically: you supply the path to a file, run the function, and you get a tibble that displays the data in the file. Behind the scenes, readr parses the overall file and specifies how each column should be converted from a character vector to the most appropriate data type. 
+
+
+--Importing .csv files - Reading a .csv file with readr 
+
+--To list the sample files from built-in datasets  
+readr_example()
+
+--To read the csv file 
+read_csv(readr_example("mtcars.csv"))
+
+
+--readxl package
+--To import spreadsheet data into R, you can use the readxl package. Readxl supports both the legacy .xls file format and the modern xml-based .xlsx file format. 
+
+To load readxl:   > library(readxl)
+To list the sample files from built-in datasets:  >   readxl_example()
+To read the csv file:  >  read_excel(readxl_example("type-me.xlsx"))
+To list the names of the individual sheets:   >  excel_sheets(readxl_example("type-me.xlsx"))
+To specify the sheet name:  > read_excel(readxl_example("type-me.xlsx"), sheet = "numeric_coercion")
+
+
+
+
+--Import csv files project
+
+## Step 1: Import data
+
+--To Set working directory
+setwd("C:/Users/Tanyaa/Downloads")
+
+--To import csv file and save it as a data frame called `bookings_df`.
+bookings_df <- read_csv("GL0bk8O2Sja9G5PDtko2uQ_31e445d7ca64417eb45aeaa08ec90bf1_hotel_bookings (1).csv")
+
+
+## Step 2: Inspect & clean data
+
+--To view data
+View(bookings_df)
+head(bookings_df)
+str(bookings_df)
+colnames(bookings_df)
+
+--To create another dataframe containing only few columns
+new_df <- select(bookings_df, `adr`, adults)
+
+--To add one more column
+mutate(new_df, total = `adr` / adults)
