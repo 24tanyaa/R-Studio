@@ -1,0 +1,35 @@
+## arrange
+
+--To sort our penguin data by bill_length in ascending order
+
+dataset %>% arrange(column name by which we want to sort our data)
+penguins %>% arrange(bill_length_mm)
+
+--to sort in descending order
+
+penguins %>% arrange(-bill_length_mm)
+
+--To save the dataframe, we have to assign the name to a dataframe
+
+penguins2 <- penguins %>% arrange(-bill_length_mm)
+view(penguins2)
+
+
+
+## Group_By and it works with summarize
+
+--here we group the islands and remove any null value, and then summarize
+
+penguins %>% group_by(island) %>% drop_na() %>% summarize(mean_bill_length_mm = mean(bill_length_mm))
+penguins %>% group_by(island) %>% drop_na() %>% summarize(max_bill_length_mm = max(bill_length_mm))
+
+--we can group on basis of more columns and summarize too
+
+penguins %>% group_by(species, island) %>% drop_na() %>% summarize(max_b1 = max(bill_length_mm), mean_b1 = mean(bill_length_mm))
+
+
+## FILTER
+
+--To get filtered data
+
+penguins %>% filter(species == "Adelie")
