@@ -1,0 +1,62 @@
+## Step 1 installing and loading packages 
+
+--install and load few packages necessary fo data cleaning.
+
+install.packages("here")
+library("here")
+
+install.packages("skimr")
+library("skimr")
+
+install.packages("janitor")
+library("janitor")
+
+install.packages("dplyr")
+library("dplyr")
+  
+--install a dataset named "palmerpenguins" and load it.
+
+install.packages("palmerpenguins")
+library("palmerpenguins")
+
+
+## Step 2 Summarise the dataset
+
+--basics
+
+Skim_without_charts(penguins)
+head(penguins)
+glimpse(penguins)
+str(penguins)
+
+
+--SELECT using pipes --For pulling just a subset of variables from a large dataset.
+
+--to see only species column
+penguins %>% 
+  select(species)
+
+--to not see species column
+penguins %>% 
+  select(-species)
+  
+
+--RENAME using pipes --to change column names
+penguins %>% 
+  rename(new_island=island)
+  
+
+--RENAME_WITH --To make column names consistent
+
+--to change column names all to uppercase
+rename_with(penguins,toupper)
+
+--to change column names all to lowercase
+rename_with(penguins,tolower)
+
+
+--CLEAN_NAMES function in Janitor package --to make column names clean and consistent(ensures there is only characters, numbers, underscores)
+clean_names(penguins)
+
+
+
