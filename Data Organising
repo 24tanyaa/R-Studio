@@ -34,3 +34,7 @@ penguins %>% group_by(species, island) %>% drop_na() %>% summarize(max_b1 = max(
 --To get filtered data
 
 penguins %>% filter(species == "Adelie")
+
+
+
+
