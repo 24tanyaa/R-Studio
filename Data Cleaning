@@ -97,3 +97,8 @@ View(new_bookings_df)
 --to add new column of total peaople
 example_df <- bookings_df %>% 
   mutate(total_people = adults, children, babies)
+
+--to summarize data as mean and total
+
+example_df <- bookings_df %>% summarize(total_cancelled = sum(is_canceled), avg_lead_time = mean(lead_time))
+head(example_df)
