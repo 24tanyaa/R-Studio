@@ -1,0 +1,113 @@
+##The basic building blocks of a ggplot2 command include:
+
+--Data: to define the dataset we are using
+--Geom_point: to create scatter plots / Geom_bar: to create bar graphs
+  (A set of geoms: A geom refers to the geometric object used to represent your data. For example, you can use points to create a scatterplot, bars to create a bar chart, lines to create a line diagram, etc)
+--Mapping agreement and aes function: mapping = aes(): Aesthetics for points: x, y, size, shape, color, alpha
+  (A set of aesthetic attributes: An aesthetic is a visual property of an object in your plot. You can think of an aesthetic as a connection, or mapping, between a visual feature in your plot and a variable in your data. For example, in a scatterplot, aesthetics include things like the size, shape, color, or location (x-axis, y-axis) of your data points)
+
+
+--Prepare data 
+install.packages("ggplot2")  > install.packages("palmerpenguins")
+library(ggplot2)  
+library(palmerpenguins)
+
+
+--Data inspection
+data("penguins")  > View(penguins)  > head(penguins)
+
+
+--Data viz
+ggplot(data = penguins) + 
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g))
+
+
+##Aesthetics for points   (x, y, size, shape, color, alpha)
+
+--Adding a Color/Shape
+ggplot(data=penguins) +
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, shape=species))
+
+
+--Adding alpha
+ggplot(data=penguins) +  
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, shape=species, alpha=species))
+
+
+--Adding Color to all the data points irrespective of their category
+ggplot(data=penguins) +
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, shape=species),color="brown")
+
+
+
+##Geoms for plots 
+
+--A geom line
+ggplot(data=penguins) +
+  geom_smooth(mapping = aes(x = flipper_length_mm, y = body_mass_g))
+
+
+--A geom line and point both
+ggplot(data=penguins) +
+  geom_smooth(mapping = aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g))
+  
+  
+--A separate line for each category in a column
+ggplot(data=penguins) +
+  geom_smooth(mapping = aes(x = flipper_length_mm, y = body_mass_g, linetype=species))
+  
+  
+--To add jitter
+ggplot(data=penguins) +
+  geom_jitter(mapping = aes(x = flipper_length_mm, y = body_mass_g))
+  
+
+--geom bar 
+
+--doesn't need y aesthtic as it counts the rows as default.
+ggplot(data=diamonds) +
+  geom_bar(mapping=aes(x=cut)
+
+
+--to use aesthtic color
+ggplot(data=diamonds) +
+  geom_bar(mapping=aes(x=cut, color=cut))
+  
+
+--to change color of bars
+ggplot(data=diamonds) +
+  geom_bar(mapping=aes(x=cut, fill=cut))
+  
+
+--to create a stacked bar chart
+ggplot(data=diamonds) +
+  geom_bar(mapping=aes(x=cut, fill=clarity))
+  
+  
+
+##Facets for sides
+
+
+facet_wrap  for single variable
+
+ggplot(data=penguins) +
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color=species)) +
+  facet_wrap(~species)
+
+facet_grid for double variables
+
+ggplot(data=penguins) +
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color=species)) +
+  facet_grid(sex~species)
+
+To focus on only one variable in facet grid
+
+ggplot(data=penguins) +
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color=species)) +
+  facet_grid(~species)
+
+
+
+
+j
