@@ -89,19 +89,19 @@ ggplot(data=diamonds) +
 ##Facets for sides
 
 
-facet_wrap  for single variable
+--facet_wrap  for single variable
 
 ggplot(data=penguins) +
   geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color=species)) +
   facet_wrap(~species)
 
-facet_grid for double variables
+--facet_grid for double variables
 
 ggplot(data=penguins) +
   geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color=species)) +
   facet_grid(sex~species)
 
-To focus on only one variable in facet grid
+--To focus on only one variable in facet grid
 
 ggplot(data=penguins) +
   geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color=species)) +
@@ -109,5 +109,24 @@ ggplot(data=penguins) +
 
 
 
+## Annotations and labels
+Annotate means to add notes to a document or diagram to explain or comment upon it.
 
-j
+--Labs function 
+
+Titles, Subtitles, Captions
+ggplot(data=penguins) +
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, color=species)) +
+  labs(title="Palmer penguins: body mass v/s flipper length", subtitle="sample of three penguin species", caption = "data collected by dr. corman")
+
+
+--Annotate function and customising labels
+
+ggplot(data=penguins) +
+  geom_point(mapping = aes(x=flipper_length_mm, y=body_mass_g, color=species)) +
+  labs(title="Palmer penguins: body mass v/s flipper length", subtitle="sample of three penguin species", caption = "data collected by dr. corman")+
+  annotate("text", x=220, y=3500, label="Gentoos are the largest, color="blue", fontface="bold", size=4.5 angle=25)")
+
+
+
+
